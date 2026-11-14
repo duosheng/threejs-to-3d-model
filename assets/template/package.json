@@ -1,0 +1,25 @@
+{
+  "name": "rigged-asset",
+  "private": true,
+  "type": "module",
+  "description": "Three.js 生成 3D 骨骼动画模型：Three.js 编写 → GLB → Blender FBX/烘焙 → 引擎导入。",
+  "scripts": {
+    "start": "node server.mjs",
+    "export": "node tools/export.mjs && node tools/validate.mjs",
+    "reference": "node tools/reference.mjs",
+    "fbx": "node tools/blender.mjs convert",
+    "bake": "node tools/blender.mjs bake && node tools/validate.mjs --baked",
+    "shoot": "node tools/shoot.mjs",
+    "pipeline": "npm run export && npm run reference && npm run fbx && npm run bake",
+    "unity": "sh unity/unity.sh check",
+    "unity:viewer": "sh unity/unity.sh viewer",
+    "unity:capture": "sh unity/unity.sh capture"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "gltf-validator": "^2.0.0-dev.3.10",
+    "playwright-core": "^1.58.0"
+  }
+}
