@@ -4,13 +4,23 @@
 
 An Agent Skill that turns a text description into a rigged, animated 3D model written as procedural Three.js code, then exports engine-ready GLB and FBX (with baked textures) via Blender.
 
-![示例甲虫 · 行走](docs/images/demo-beetle-walk-0.3-side.png)
+![裂甲虫后 · 行走](docs/images/brood-tyrant-walk.jpg)
 
-| 待机 idle | 扑咬 attack |
+| 咆哮 roar | 镰斩 attack |
 |---|---|
-| ![idle](docs/images/demo-beetle-idle-0.1-front.png) | ![attack](docs/images/demo-beetle-attack-0.45-front.png) |
+| ![roar](docs/images/brood-tyrant-roar.jpg) | ![attack](docs/images/brood-tyrant-attack.jpg) |
 
-上图是模板自带的示例生物，在 Chrome 中实时渲染：20 根骨骼、3 段动画、腿部 IK、软蒙皮尾巴、程序化法线贴图、发光材质。
+「裂甲虫后（Brood Tyrant）」全部由 Three.js 代码生成，没有用任何建模软件：31 根骨骼、4 段动画（待机、行走、镰斩、咆哮）、腿部 IK、程序化甲壳纹理、熔岩发光。上图是 Chrome 实时渲染。
+
+同一个模型走完流水线后，在 Blender 和 Unity 里的样子：
+
+| Blender 烘焙后的 FBX | Unity 2022.3 导入（左 FBX，右 GLB） |
+|---|---|
+| ![blender](docs/images/brood-tyrant-blender-baked.png) | ![unity](docs/images/brood-tyrant-unity.png) |
+
+Unity 中与 Three.js 原动画逐帧比对骨骼位置，最大误差 GLB 约 1 µm、FBX 约 3 µm。
+
+> 裂甲虫后是用这套流水线做的展示作品，代码不在本仓库里。模板自带的是一只较简单的示例甲虫（20 根骨骼、3 段动画），作为编写新生物的起点。
 
 ## 它能做什么
 
@@ -36,7 +46,7 @@ An Agent Skill that turns a text description into a rigged, animated 3D model wr
 - **文字即模型**：人物、怪物、生物、机甲、道具，用自然语言描述即可，Agent 按规格表写代码。
 - **动作逐帧一致**：所有运动都是 `u ∈ [0, 1]` 的纯函数，预览、导出、参考采样共用一套代码。
 - **引擎可用**：产物为标准 GLB 和 FBX，附 `manifest.json`（骨骼、动画、事件、误差）。
-- **有验收**：glTF 校验 0 错误；Unity 2022.3 实测 FBX 和 GLB 骨骼误差都在 1 µm 以内。
+- **有验收**：glTF 校验 0 错误；Unity 2022.3 实测 FBX 和 GLB 骨骼误差都是微米级。
 
 ## 安装
 
