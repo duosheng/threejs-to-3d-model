@@ -40,7 +40,13 @@ An Agent Skill that turns a text description into a rigged, animated 3D model wr
 
 ## 安装
 
-把仓库克隆到你所用 Agent 的 skills 目录即可：
+一键安装（[skills](https://github.com/vercel-labs/skills) CLI，自动识别 Claude Code、Codex、Cursor 等 Agent）：
+
+```bash
+npx skills add duosheng/threejs-to-3d-model -g
+```
+
+或者手动克隆到你所用 Agent 的 skills 目录：
 
 ```bash
 # Claude Code
